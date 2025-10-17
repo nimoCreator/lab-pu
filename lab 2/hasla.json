@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "haslo": "Elektrownia Jaworzno",
+    "tresc": "Cud polskiej myśli technicznej"
+  },
+  {
+    "id": 2,
+    "haslo": "Huta Katowice",
+    "tresc": "Nie znajduje się w Katowicach"
+  },
+  {
+    "id": 3,
+    "haslo": "ozlewnia Fanty",
+    "tresc": "Najbardziej skażone promieniotwórczo miejsce we wszechświecie"
+  },
+  {
+    "id": 1002,
+    "haslo": "Elektrownia Jaworzno II",
+    "tresc": "Opis testowy"
+  },
+  {
+    "id": 1003,
+    "haslo": "Litwo Ojczyzno Moja",
+    "tresc": "Opis testowy 2"
+  }
+]

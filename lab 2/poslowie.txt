@@ -1,0 +1,511 @@
+
+=====[ POSLOWIE ]=====
+Lacznie: 498
+Kobiety: 153
+Mezczyzni: 345
+Polskie znaki w nazwisku: 147
+Wieloczlonowe imie: 46
+Wieloczlonowe nazwisko: 25
+
+
+
+imie	nazwisko	plec	polskie_znaki	wieloczlonowe_imie	wieloczlonowe_nazwisko
+                  imie               nazwisko plec  polskie_znaki  wieloczlonowe_imie  wieloczlonowe_nazwisko
+               Andrzej               Adamczyk    m          False               False                   False
+                 Piotr              Adamowicz    m          False               False                   False
+                  Adam         Andruszkiewicz    m          False               False                   False
+              Waldemar                 Andzel    m          False               False                   False
+                Dorota Arciszewska-Mielewczyk    k          False               False                    True
+         Jan Krzysztof             Ardanowski    m          False                True                   False
+             Iwona Ewa                  Arent    k          False                True                   False
+               Bartosz             Arłukowicz    m           True               False                   False
+                 Marek                    Ast    m          False               False                   False
+               Urszula               Augustyn    k          False               False                   False
+                 Piotr               Babinetz    m          False               False                   False
+                  Anna                 Baluch    k          False               False                   False
+               Ryszard               Bartosik    m          False               False                   False
+             Władysław           Bartoszewski    m          False               False                   False
+               Barbara                 Bartuś    k           True               False                   False
+                 Paweł                  Bejda    m          False               False                   False
+                Konrad              Berkowicz    m          False               False                   False
+                Sylwia              Bielawska    k          False               False                   False
+                 Marek              Biernacki    m          False               False                   False
+                 Paweł               Bliźniuk    m           True               False                   False
+               Mariusz              Błaszczak    m           True               False                   False
+               Mateusz               Bochenek    m          False               False                   False
+                 Rafał               Bochenek    m          False               False                   False
+               Izabela                 Bodnar    k          False               False                   False
+                 Jacek                Bogucki    m          False               False                   False
+              Zbigniew                Bogucki    m          False               False                   False
+             Krzysztof               Bojarski    m          False               False                   False
+                Joanna               Borowiak    k          False               False                   False
+                 Kamil             Bortniczuk    m          False               False                   False
+                 Piotr                  Borys    m          False               False                   False
+                Bożena            Borys-Szopa    k          False               False                    True
+                Marcin                Bosacki    m          False               False                   False
+           Karina Anna                  Bosak    k          False                True                   False
+             Krzysztof                  Bosak    m          False               False                   False
+              Grzegorz                  Braun    m          False               False                   False
+             Krzysztof                 Brejza    m          False               False                   False
+             Agnieszka              Buczyńska    k           True               False                   False
+              Waldemar                   Buda    m          False               False                   False
+                 Borys                  Budka    m          False               False                   False
+              Elżbieta             Burkiewicz    k          False               False                   False
+                 Lidia              Burzyńska    k           True               False                   False
+             Marek Jan            Chmielewski    m          False                True                   False
+              Zbigniew            Chmielowiec    m          False               False                   False
+                 Artur               Chojecki    m          False               False                   False
+    Kazimierz Bogusław                  Choma    m          False                True                   False
+              Dominika            Chorosińska    k           True               False                   False
+               Tadeusz                 Chrzan    m          False               False                   False
+                Alicja               Chybicka    k          False               False                   False
+              Anna Ewa              Cicholska    k          False                True                   False
+                Janusz                 Cichoń    m           True               False                   False
+             Krzysztof               Ciecióra    m           True               False                   False
+                Janusz             Cieszyński    m           True               False                   False
+                Michał                Cieślak    m           True               False                   False
+                Żaneta      Cwalina-Śliwowska    k           True               False                    True
+             Krzysztof              Czarnecki    m          False               False                   False
+       Witold Wojciech              Czarnecki    m          False                True                   False
+            Przemysław                Czarnek    m          False               False                   False
+             Arkadiusz            Czartoryski    m          False               False                   False
+           Włodzimierz              Czarzasty    m          False               False                   False
+                 Lidia                Czechak    k          False               False                   False
+                 Jacek               Czerniak    m          False               False                   False
+                 Zofia                Czernow    k          False               False                   False
+                 Anita             Czerwińska    k           True               False                   False
+             Katarzyna               Czochara    k          False               False                   False
+              Sławomir                   Ćwik    m           True               False                   False
+             Władysław                Dajczak    m          False               False                   False
+                  Anna     Dąbrowska-Banaszek    k           True               False                    True
+              Zbigniew                 Dolata    m          False               False                   False
+               Barbara                Dolniak    k          False               False                   False
+               Andrzej               Domański    m           True               False                   False
+            Bartłomiej             Dorywalski    m          False               False                   False
+                Robert                 Dowhan    m          False               False                   False
+            Przemysław                 Drabek    m          False               False                   False
+              Elżbieta                   Duda    k          False               False                   False
+          Michał Paweł               Dworczyk    m          False                True                   False
+                  Adam               Dziedzic    m          False               False                   False
+            Jan Michał            Dziedziczak    m          False                True                   False
+             Agnieszka      Dziemianowicz-Bąk    k           True               False                    True
+             Magdalena                 Filiks    k          False               False                   False
+             Magdalena        Filipek-Sobczak    k          False               False                    True
+              Radosław                 Fogiel    m          False               False                   False
+             Bronisław                 Foltyn    m          False               False                   False
+                 Roman                  Fritz    m          False               False                   False
+                Joanna               Frydrych    k          False               False                   False
+                Konrad               Frysztak    m          False               False                   False
+                Patryk                Gabriel    m          False               False                   False
+             Krzysztof               Gadowski    m          False               False                   False
+            Aleksandra               Gajewska    k          False               False                   False
+                 Kinga               Gajewska    k          False               False                   False
+              Elżbieta               Gapińska    k           True               False                   False
+                Kamila        Gasiuk-Pihowicz    k          False               False                    True
+             Krzysztof              Gawkowski    m          False               False                   False
+              Zdzisław                 Gawlik    m          False               False                   False
+               Andrzej                 Gawron    m          False               False                   False
+              Grzegorz                   Gaża    m           True               False                   False
+              Elżbieta                 Gelert    k          False               False                   False
+                  Anna               Gembicka    k          False               False                   False
+          Artur Daniel                Gierada    m          False                True                   False
+                 Roman               Giertych    m          False               False                   False
+            Włodzisław               Giziński    m           True               False                   False
+                Szymon               Giżyński    m           True               False                   False
+                 Piotr                Gliński    m           True               False                   False
+                Tomasz              Głogowski    m           True               False                   False
+                 Piotr                Głowski    m           True               False                   False
+                 Marta                 Golbik    k          False               False                   False
+            Małgorzata               Golińska    k           True               False                   False
+             Kazimierz               Gołojuch    m           True               False                   False
+                  Adam                 Gomoła    m           True               False                   False
+                Robert                Gontarz    m          False               False                   False
+             Stanisław               Gorczyca    m          False               False                   False
+               Mariusz                  Gosek    m          False               False                   False
+                 Daria         Gosek-Popiołek    k           True               False                    True
+            Małgorzata              Gosiewska    k          False               False                   False
+                 Piotr           Górnikiewicz    m           True               False                   False
+             Agnieszka                 Górska    k           True               False                   False
+             Krzysztof               Grabczuk    m          False               False                   False
+                   Jan                Grabiec    m          False               False                   False
+                Marcin              Grabowski    m          False               False                   False
+                Michał              Gramatyka    m          False               False                   False
+            Małgorzata              Gromadzka    k          False               False                   False
+                 Marek             Gróbarczyk    m           True               False                   False
+               Barbara           Grygorcewicz    k          False               False                   False
+               Andrzej                  Grzyb    m          False               False                   False
+               Andrzej            Gut-Mostowy    m          False               False                    True
+             Kazimierz            Gwiazdowski    m          False               False                   False
+                Marcin                 Gwóźdź    m           True               False                   False
+                 Marek                   Gzik    m          False               False                   False
+             Krzysztof                 Habura    m          False               False                   False
+             Agnieszka              Hanajczyk    k          False               False                   False
+                 Iwona               Hartwich    k          False               False                   False
+               Paulina          Hennig-Kloska    k          False               False                    True
+             Krzysztof                 Hetman    m          False               False                   False
+               Czesław                    Hoc    m          False               False                   False
+              Zbigniew               Hoffmann    m          False               False                   False
+          Marek Tomasz                    Hok    m          False                True                   False
+               Bożenna               Hołownia    k           True               False                   False
+                Szymon               Hołownia    m           True               False                   False
+                Marcin                 Horała    m           True               False                   False
+                Łukasz            Horbatowski    m          False               False                   False
+                 Paweł                Hreniak    m          False               False                   False
+                 Paweł              Jabłoński    m           True               False                   False
+                Michał                   Jach    m          False               False                   False
+               Klaudia                Jachira    k          False               False                   False
+                Robert                  Jagła    m           True               False                   False
+                 Marek               Jakubiak    m          False               False                   False
+      Maria Małgorzata                Janyska    k          False                True                   False
+                Michał                  Jaros    m          False               False                   False
+                Patryk              Jaskulski    m          False               False                   False
+               Dominik              Jaśkowiec    m           True               False                   False
+                Danuta            Jazłowiecka    k           True               False                   False
+               Dariusz                 Joński    m           True               False                   False
+                Marcin             Józefaciuk    m           True               False                   False
+         Norbert Jakub            Kaczmarczyk    m          False                True                   False
+                 Filip              Kaczyński    m           True               False                   False
+              Jarosław              Kaczyński    m           True               False                   False
+                 Piotr                 Kaleta    m          False               False                   False
+             Sebastian                 Kaleta    m          False               False                   False
+               Mariusz                Kałużny    m           True               False                   False
+               Mariusz               Kamiński    m           True               False                   False
+                 Piotr                Kandyba    m          False               False                   False
+                   Jan                Kanthak    m          False               False                   False
+    Fryderyk Sylwester                Kapinos    m          False                True                   False
+                 Jacek              Karnowski    m          False               False                   False
+                 Iwona             Karolewska    k          False               False                   False
+                 Rafał               Kasprzyk    m          False               False                   False
+                Henryk                Kiepura    m          False               False                   False
+                Marcin             Kierwiński    m           True               False                   False
+             Katarzyna       Kierzek-Koperska    k          False               False                    True
+               Dariusz               Klimczak    m          False               False                   False
+                Joanna      Kluzik-Rostkowska    k          False               False                    True
+       Agnieszka Maria               Kłopotek    k           True                True                   False
+                Łukasz                  Kmita    m          False               False                   False
+                Michał                Kobosko    m          False               False                   False
+                 Maria                    Koc    k          False               False                   False
+                   Ewa              Kołodziej    k           True               False                   False
+  Magdalena Małgorzata          Kołodziejczak    k           True                True                   False
+                Michał          Kołodziejczak    m           True               False                   False
+                 Rafał             Komarewicz    m          False               False                   False
+                Maciej              Konieczny    m          False               False                   False
+              Zbigniew              Konwiński    m           True               False                   False
+             Władysław        Kosiniak-Kamysz    m          False               False                    True
+                Tomasz                 Kostuś    m           True               False                   False
+               Andrzej            Kosztowniak    m          False               False                   False
+               Urszula              Koszutska    k          False               False                   False
+            Aleksandra                    Kot    k          False               False                   False
+             Katarzyna                 Kotula    k          False               False                   False
+                 Paweł                  Kowal    m          False               False                   False
+                 Piotr                  Kowal    m          False               False                   False
+                Henryk              Kowalczyk    m          False               False                   False
+                Janusz               Kowalski    m          False               False                   False
+                Michał               Kowalski    m          False               False                   False
+         Bartosz Józef               Kownacki    m          False                True                   False
+           Iwona Maria              Kozłowska    k           True                True                   False
+          Maria Joanna           Koźlakiewicz    k           True                True                   False
+              Jarosław              Krajewski    m          False               False                   False
+                Stefan              Krajewski    m          False               False                   False
+               Wiesław              Krajewski    m          False               False                   False
+               Leonard              Krasulski    m          False               False                   False
+      Iwona Małgorzata               Krawczyk    k          False                True                   False
+                Michał               Krawczyk    m          False               False                   False
+                Robert            Kropiwnicki    m          False               False                   False
+                 Piotr                   Król    m           True               False                   False
+              Wojciech                   Król    m           True               False                   False
+             Katarzyna                 Królak    k           True               False                   False
+                  Anna                 Krupka    k          False               False                   False
+               Andrzej                   Kryj    m          False               False                   False
+               Mariusz               Krystian    m          False               False                   False
+                 Marek               Krząkała    m           True               False                   False
+                  Adam             Krzemiński    m           True               False                   False
+               Henryka  Krzywonos-Strycharska    k          False               False                    True
+             Krzysztof                  Kubów    m           True               False                   False
+                 Anita     Kucharska-Dziedzic    k          False               False                    True
+                 Marek             Kuchciński    m           True               False                   False
+                 Paweł                  Kukiz    m          False               False                   False
+                Marcin                Kulasek    m          False               False                   False
+        Wioletta Maria                  Kulpa    k          False                True                   False
+                 Maria               Kurowska    k          False               False                   False
+             Władysław               Kurowski    m          False               False                   False
+    Zbigniew Krzysztof                Kuźmiuk    m           True                True                   False
+                  Anna               Kwiecień    k           True               False                   False
+                 Piotr              Lachowicz    m          False               False                   False
+             Stanisław                Lamczyk    m          False               False                   False
+                Maciej                  Lasek    m          False               False                   False
+              Gabriela            Lenartowicz    k          False               False                   False
+                   Ewa                Leniart    k          False               False                   False
+            Aleksandra                    Leo    k          False               False                   False
+               Izabela              Leszczyna    k          False               False                   False
+                Joanna               Lichocka    k          False               False                   False
+             Krzysztof                 Lipiec    m          False               False                   False
+                Bożena               Lisowska    k          False               False                   False
+                Łukasz                Litewka    m          False               False                   False
+              Grzegorz                  Lorek    m          False               False                   False
+              Radosław                Lubczyk    m          False               False                   False
+        Katarzyna Anna               Lubnauer    k          False                True                   False
+                  Adam               Luboński    m           True               False                   False
+        Artur Jarosław                  Łącki    m           True                True                   False
+                Alicja        Łepkowska-Gołaś    k           True               False                    True
+                Dorota                 Łoboda    k           True               False                   False
+             Magdalena                  Łośko    k           True               False                   False
+                Alicja                 Łuczak    k           True               False                   False
+              Krystian                 Łuczak    m           True               False                   False
+             Sebastian            Łukaszewicz    m           True               False                   False
+          Marzena Anna               Machałek    k           True                True                   False
+                Antoni            Macierewicz    m          False               False                   False
+              Grzegorz                  Macko    m          False               False                   False
+     Marlena Magdalena                  Maląg    k           True                True                   False
+                   Ewa                  Malik    k          False               False                   False
+              Mirosław            Maliszewski    m          False               False                   False
+                Maciej                Małecki    m           True               False                   False
+             Arkadiusz              Marchewka    m          False               False                   False
+                 Jagna   Marczułajtis-Walczak    k           True               False                    True
+                Dorota                  Marek    k          False               False                   False
+                 Paweł                Masełko    m           True               False                   False
+               Dariusz                Matecki    m          False               False                   False
+                 Jerzy                Materna    m          False               False                   False
+              Grzegorz               Matusiak    m          False               False                   False
+             Katarzyna         Matusik-Lipiec    k          False               False                    True
+                 Marek            Matuszewski    m          False               False                   False
+               Paulina               Matysiak    k          False               False                   False
+                Łukasz                  Mejza    m          False               False                   False
+              Sławomir                Mentzen    m          False               False                   False
+                 Jerzy            Meysztowicz    m          False               False                   False
+             Krzysztof            Mieszkowski    m          False               False                   False
+                  Anna           Milczanowska    k          False               False                   False
+                Daniel               Milewski    m          False               False                   False
+               Rajmund                 Miller    m          False               False                   False
+            Aleksander              Miszalski    m          False               False                   False
+               Mateusz             Morawiecki    m          False               False                   False
+                   Jan               Mosiński    m           True               False                   False
+                Michał                 Moskal    m          False               False                   False
+               Czesław                Mroczek    m          False               False                   False
+    Aleksander Mikołaj            Mrówczyński    m           True                True                   False
+     Izabela Katarzyna             Mrzygłocka    k           True                True                   False
+                Joanna                  Mucha    k          False               False                   False
+             Arkadiusz              Mularczyk    m          False               False                   False
+             Krzysztof                 Mulawa    m          False               False                   False
+                 Piotr                 Müller    m          False               False                   False
+             Arkadiusz                 Myrcha    m          False               False                   False
+              Grzegorz            Napieralski    m          False               False                   False
+                Dorota              Niedziela    k          False               False                   False
+                 Jacek           Niedźwiedzki    m           True               False                   False
+            Małgorzata               Niemczyk    k          False               False                   False
+               Jolanta             Niezgodzka    k          False               False                   False
+              Sławomir                 Nitras    m          False               False                   False
+               Barbara                Nowacka    k          False               False                   False
+              Maja Ewa                  Nowak    k          False                True                   False
+          Tomasz Piotr                  Nowak    m          False                True                   False
+                 Wanda                Nowicka    k          False               False                   False
+               Urszula             Nowogórska    k           True               False                   False
+             Mirosława                 Nykiel    k          False               False                   False
+                Marcin                 Ociepa    m          False               False                   False
+               Marzena        Okła-Drewnowicz    k           True               False                    True
+               Barbara                  Okuła    k           True               False                   False
+              Bogumiła                 Olbryś    k           True               False                   False
+               Barbara              Oliwiecka    k          False               False                   False
+                Dorota                   Olko    k          False               False                   False
+                 Paweł              Olszewski    m          False               False                   False
+         Mirosław Adam               Orliński    m           True                True                   False
+                Łukasz                Osmalak    m          False               False                   False
+             Katarzyna                   Osos    k          False               False                   False
+                 Jacek                  Osuch    m          False               False                   False
+                 Jacek                 Ozdoba    m          False               False                   False
+                  Anna                 Paluch    k          False               False                   False
+                Teresa                 Pamuła    k           True               False                   False
+                 Paweł                  Papke    m          False               False                   False
+               Urszula              Pasławska    k           True               False                   False
+             Krzysztof                 Paszyk    m          False               False                   False
+              Karolina              Pawliczak    k          False               False                   False
+                Monika              Pawłowska    k           True               False                   False
+            Bartłomiej                   Pejo    m          False               False                   False
+               Ryszard                  Petru    m          False               False                   False
+            Małgorzata                  Pępek    k           True               False                   False
+             Krzysztof             Piątkowski    m           True               False                   False
+              Bolesław                 Piecha    m          False               False                   False
+              Grzegorz             Piechowiak    m          False               False                   False
+                  Anna              Pieczarka    k          False               False                   False
+       Katarzyna Maria              Piekarska    k          False                True                   False
+               Norbert           Pietrykowski    m          False               False                   False
+          Lucjan Marek             Pietrzczyk    m          False                True                   False
+               Dariusz            Piontkowski    m          False               False                   False
+             Kazimierz                 Plocke    m          False               False                   False
+              Grzegorz                Płaczek    m           True               False                   False
+                Kacper              Płażyński    m           True               False                   False
+                Szymon                 Pogoda    m          False               False                   False
+                 Jerzy               Polaczek    m          False               False                   False
+         Elżbieta Anna                  Polak    k          False                True                   False
+                 Piotr                  Polak    m          False               False                   False
+                Michał             Połuboczek    m           True               False                   False
+             Agnieszka                Pomaska    k          False               False                   False
+               Mariusz              Popielarz    m          False               False                   False
+                Marcin               Porzucek    m          False               False                   False
+                 Jacek                 Protas    m          False               False                   False
+                Marcin               Przydacz    m          False               False                   False
+              Grzegorz                   Puda    m          False               False                   False
+                Michał                 Pyrzyk    m          False               False                   False
+                Renata                    Rak    k          False               False                   False
+              Ireneusz                    Raś    m           True               False                   False
+              Zbigniew                    Rau    m          False               False                   False
+             Magdalena                Roguska    k          False               False                   False
+                Marcin             Romanowski    m          False               False                   False
+                 Rafał             Romanowski    m          False               False                   False
+               Bartosz               Romowicz    m          False               False                   False
+                Monika                   Rosa    k          False               False                   False
+               Wiesław               Różyński    m           True               False                   False
+               Urszula                Rusecka    k          False               False                   False
+              Grzegorz               Rusiecki    m          False               False                   False
+                 Jakub               Rutnicki    m          False               False                   False
+                 Paweł                Rychlik    m          False               False                   False
+                 Marek                  Rząsa    m           True               False                   False
+              Jarosław                  Rzepa    m          False               False                   False
+                Tomasz             Rzymkowski    m          False               False                   False
+              Jarosław               Sachajko    m          False               False                   False
+                 Paweł                  Sałek    m           True               False                   False
+              Wojciech                 Saługa    m           True               False                   False
+               Tadeusz              Samborski    m          False               False                   False
+                 Jacek                  Sasin    m          False               False                   False
+                 Marek                Sawicki    m          False               False                   False
+                   Ewa               Schädler    k          False               False                   False
+                Joanna      Scheuring-Wielgus    k          False               False                    True
+                  Anna                Schmidt    k          False               False                   False
+                Łukasz              Schreiber    m          False               False                   False
+              Jarosław                 Sellin    m          False               False                   False
+              Olga Ewa     Semeniuk-Patkowska    k          False                True                    True
+                Edward                 Siarka    m          False               False                   False
+              Krystyna               Sibińska    k           True               False                   False
+               Czesław             Siekierski    m          False               False                   False
+                 Rafał              Siemaszko    m          False               False                   False
+                Tomasz              Siemoniak    m          False               False                   False
+            Bartłomiej            Sienkiewicz    m          False               False                   False
+             Arkadiusz                 Sikora    m          False               False                   False
+           Włodzimierz                 Skalik    m          False               False                   False
+                Marcin             Skonieczka    m          False               False                   False
+              Krystyna             Skowrońska    k           True               False                   False
+              Sławomir                Skwarek    m          False               False                   False
+              Waldemar               Sługocki    m           True               False                   False
+              Weronika               Smarduch    k          False               False                   False
+                Henryk                Smolarz    m          False               False                   False
+             Kazimierz              Smoliński    m           True               False                   False
+                  Anna                Sobolak    k          False               False                   False
+             Krzysztof             Sobolewski    m          False               False                   False
+                 Artur                  Soboń    m           True               False                   False
+        Agnieszka Anna                   Soin    k          False                True                   False
+              Zbigniew              Sosnowski    m          False               False                   False
+                 Marek                   Sowa    m          False               False                   False
+             Katarzyna                  Sójka    k           True               False                   False
+             Magdalena                  Sroka    k          False               False                   False
+             Mirosława     Stachowiak-Różecka    k           True               False                    True
+             Katarzyna             Stachowicz    k          False               False                   False
+               Dariusz              Stefaniuk    m          False               False                   False
+            Franciszek            Sterczewski    m          False               False                   False
+                 Marta                 Stożek    k           True               False                   False
+           Piotr Paweł                 Strach    m          False                True                   False
+                 Marek                 Subocz    m          False               False                   False
+              Mirosław                 Suchoń    m           True               False                   False
+                 Marek                  Suski    m          False               False                   False
+                 Paweł                  Suski    m          False               False                   False
+                 Artur             Szałabawka    m           True               False                   False
+              Wojciech                Szarama    m          False               False                   False
+               Wiesław            Szczepański    m           True               False                   False
+                Michał               Szczerba    m          False               False                   False
+             Krzysztof               Szczucki    m          False               False                   False
+                Józefa       Szczurek-Żelazko    k           True               False                    True
+                 Paweł            Szefernaker    m          False               False                   False
+               Andrzej                 Szejna    m          False               False                   False
+               Andrzej              Szewiński    m           True               False                   False
+                  Adam                Szłapka    m           True               False                   False
+                Henryk              Szopiński    m           True               False                   False
+                 Paweł                  Szrot    m          False               False                   False
+              Krystyna               Szumilas    k          False               False                   False
+             Stanisław                  Szwed    m          False               False                   False
+                   Ewa            Szymanowska    k          False               False                   False
+             Krzysztof              Szymański    m           True               False                   False
+                Tomasz              Szymański    m           True               False                   False
+        vel Sęk Szymon             Szynkowski    m          False                True                   False
+                Łukasz          Ściebiorowski    m           True               False                   False
+             Agnieszka                 Ścigaj    k           True               False                   False
+               Andrzej                 Śliwka    m           True               False                   False
+                 Paweł                   Śliz    m           True               False                   False
+             Krzysztof                Śmiszek    m           True               False                   False
+                 Jacek                  Świat    m           True               False                   False
+            Apoloniusz                 Tajner    m          False               False                   False
+             Krzysztof            Tchórzewski    m           True               False                   False
+                Robert                  Telus    m          False               False                   False
+               Ryszard               Terlecki    m          False               False                   False
+               Tadeusz            Tomaszewski    m          False               False                   False
+           Włodzimierz            Tomaszewski    m          False               False                   False
+                 Jacek                Tomczak    m          False               False                   False
+               Wioleta                Tomczak    k          False               False                   False
+                Cezary                Tomczyk    m          False               False                   False
+                Maciej          Tomczykiewicz    m          False               False                   False
+             Stanisław             Tomczyszyn    m          False               False                   False
+            Małgorzata                  Tracz    k          False               False                   False
+                Tomasz                  Trela    m          False               False                   False
+             Krzysztof            Truskolaski    m          False               False                   False
+             Krzysztof                  Tuduj    m          False               False                   False
+             Sylwester                Tułajew    m           True               False                   False
+                Witold             Tumanowicz    m          False               False                   False
+                Donald                   Tusk    m          False               False                   False
+             Stanisław                 Tyszka    m          False               False                   False
+             Katarzyna               Ueberhan    k          False               False                   False
+              Jarosław               Urbaniak    m          False               False                   False
+                 Piotr                 Uruski    m          False               False                   False
+                 Piotr               Uściński    m           True               False                   False
+   Aleksandra Karolina    Uznańska-Wiśniewska    k           True                True                    True
+              Jarosław                 Wałęsa    m           True               False                   False
+                Marcin                Warchoł    m           True               False                   False
+                Robert               Wardzała    m           True               False                   False
+                Robert                 Warwas    m          False               False                   False
+                   Jan               Warzecha    m          False               False                   False
+            Małgorzata             Wassermann    k          False               False                   False
+                Michał                  Wawer    m          False               False                   False
+                Maciej                  Wąsik    m           True               False                   False
+                 Marta                 Wcisło    k           True               False                   False
+                 Rafał                  Weber    m          False               False                   False
+                 Marek                 Wesoły    m           True               False                   False
+                Joanna                  Wicha    k          False               False                   False
+                Patryk                 Wicher    m          False               False                   False
+               Dariusz              Wieczorek    m          False               False                   False
+      Jarosław Wiesław              Wieczorek    m          False                True                   False
+                Monika           Wielichowska    k          False               False                   False
+               Ryszard                   Wilk    m          False               False                   False
+                Teresa                   Wilk    k          False               False                   False
+            Przemysław                 Wipler    m          False               False                   False
+                Adrian                Witczak    m          False               False                   False
+               Mariusz                Witczak    m          False               False                   False
+              Elżbieta                  Witek    k          False               False                   False
+            Przemysław                  Witek    m          False               False                   False
+                 Kamil                   Wnuk    m          False               False                   False
+                  Anna          Wojciechowska    k          False               False                   False
+van Heukelom Agnieszka          Wojciechowska    k          False                True                   False
+                 Agata              Wojtyszek    k          False               False                   False
+              Bogusław            Wołoszański    m           True               False                   False
+                Michał                    Woś    m           True               False                   False
+              Grzegorz                Woźniak    m           True               False                   False
+               Tadeusz                Woźniak    m           True               False                   False
+                Michał                 Wójcik    m           True               False                   False
+                Maciej                 Wróbel    m           True               False                   False
+            Bartłomiej             Wróblewski    m           True               False                   False
+                 Paweł               Zalewski    m          False               False                   False
+                Adrian               Zandberg    m          False               False                   False
+        Andrzej Tomasz             Zapałowski    m           True                True                   False
+               Bartosz                Zawieja    m          False               False                   False
+             Marcelina                Zawisza    k          False               False                   False
+              Sławomir               Zawiślak    m           True               False                   False
+        Bogdan Andrzej             Zdrojewski    m          False                True                   False
+                Witold           Zembaczyński    m           True               False                   False
+                 Piotr             Zgorzelski    m          False               False                   False
+              Zbigniew              Ziejewski    m          False               False                   False
+          Urszula Sara              Zielińska    k           True                True                   False
+              Jarosław              Zieliński    m           True               False                   False
+                Tomasz              Zieliński    m           True               False                   False
+               Jolanta             Zięba-Gzik    k           True               False                    True
+                Tomasz                 Zimoch    m          False               False                   False
+              Zbigniew                 Ziobro    m          False               False                   False
+       Wojciech Michał               Zubowski    m          False                True                   False
+              Ireneusz                  Zyska    m          False               False                   False
+                Bożena             Żelazowska    k           True               False                   False
+            Anna Maria               Żukowska    k           True                True                   False

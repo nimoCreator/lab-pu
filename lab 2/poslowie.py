@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import re
 from pathlib import Path
+import unicodedata
 
 def polskie_nazwisko(nazwisko: str) -> bool:
     """
@@ -11,7 +12,7 @@ def polskie_nazwisko(nazwisko: str) -> bool:
     :param nazwisko: podany string do testu
     :return: infromacja czy w podanym stringu wystepuja polskie litery
     """
-    return bool(re.search(r"ąćęłńóśżźĄĆĘŁŃÓŚŻŹ", nazwisko))
+    return bool(re.search(r"[ąćęłńóśżźĄĆĘŁŃÓŚŻŹ]", unicodedata.normalize("NFC", nazwisko)))
 
 def czyWieloczlonowe(text: str) -> bool:
     """
@@ -63,18 +64,18 @@ for div in soup.find_all("div", class_="deputyName notranslate"):
 
 df = pd.DataFrame(poslowie)
 df = df.drop_duplicates(ignore_index=True)
-print(df)
-
+# print(df)
 
 outfile = Path("poslowie.txt")
 with outfile.open("w", encoding="utf-8") as f:
     f.write("\n=====[ POSLOWIE ]=====\n")
-    f.write(f"Lacznie: {liczba_wszystkich}\n")
-    f.write(f"Kobiety: {liczba_k}\n")
-    f.write(f"Mezczyzni: {liczba_m}\n")
-    f.write(f"Z polskimi znakami w nazwisku: {liczba_polskie}\n")
-    f.write(f"Wieloczlonowe imie: {liczba_wielo_imie}\n")
-    f.write(f"Wieloczlonowe nazwisko: {liczba_wielo_nazw}\n")
+    f.write(f"Lacznie: { len(df) }\n")
+    f.write(f"Kobiety: { int((df["plec"] == "k").sum()) }\n")
+    f.write(f"Mezczyzni: { int((df["plec"] == "m").sum()) }\n")
+    f.write(f"Polskie znaki w nazwisku: { int(df["polskie_znaki"].sum()) }\n")
+    f.write(f"Wieloczlonowe imie: { int(df["wieloczlonowe_imie"].sum()) }\n")
+    f.write(f"Wieloczlonowe nazwisko: { int(df["wieloczlonowe_nazwisko"].sum()) }\n")
     f.write("\n\n\nimie\tnazwisko\tplec\tpolskie_znaki\twieloczlonowe_imie\twieloczlonowe_nazwisko\n")
-    df.to_csv(f, sep="\t", index=False, header=False)
-print(f"Zapisano {outfile.resolve()}")
+    f.write(df.to_string(index=False))
+    f.write("\n")
+print(f"Zapisano do {outfile.resolve()}")
