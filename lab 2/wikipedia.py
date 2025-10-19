@@ -32,19 +32,21 @@ def getTresc(href: str) -> str:
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
 
-    cont = soup.select_one(".mw-content-ltr.mw-parser-output") or soup
+    cont = soup.select_one("#bodyContent") or soup
 
-    for t in cont.find_all("table"):
-            t.decompose()
+    # for t in cont.find_all("table"):
+    #         t.decompose()
 
+    text = ""
     for p in cont.find_all("p"):
-        text = p.get_text(" ", strip=True)
-        text = re.sub(r"\[\s*(\d+|[a-zA-Z])(\s*[–\-]\s*(\d+|[a-zA-Z]))?\s*\]", "", text) 
-        text = re.sub(r"\s+", " ", text)
-        text = re.sub(r"\s+([,.;:!?])", r"\1", text)
-        if text:
-            # print(text)
-            return text
+        text += p.get_text(" ", strip=True)
+
+    text = re.sub(r"\[\s*(\d+|[a-zA-Z])(\s*[–\-]\s*(\d+|[a-zA-Z]))?\s*\]", "", text) 
+    text = re.sub(r"\s+", " ", text)
+    text = re.sub(r"\s+([,.;:!?])", r"\1", text)
+    if text:
+        # print(text)
+        return text
         
     return ""
 
