@@ -5,11 +5,11 @@ from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session
 from ksiazkaModel import Ksiazka
 
-DATABASE_URL = "mssql+pyodbc://@(localdb)\MSSQLLocalDB/Biblioteka?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
+DATABASE_URL = "mssql+pyodbc://@(localdb)\\MSSQLLocalDB/Biblioteka?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
 
 API_URL = "https://router.huggingface.co/v1/chat/completions"
 MODEL_ID = "Qwen/Qwen3-VL-235B-A22B-Instruct:novita"
-HF_TOKEN = "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"
+HF_TOKEN = "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"
 HEADERS = {"Authorization": f"Bearer {HF_TOKEN}"} if HF_TOKEN else None
 
 def translate_text(text_en: str) -> str:
@@ -31,7 +31,6 @@ def translate_text(text_en: str) -> str:
         ],
     }
     r = requests.post(API_URL, headers=HEADERS, json=payload, timeout=120)
-    r.raise_for_status()
     data = r.json()
     try:
         return data["choices"][0]["message"]["content"].strip()
