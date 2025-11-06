@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session
 from ksiazkaModel import Ksiazka
 
-DATABASE_URL = "mssql+pyodbc://@(localdb)\MSSQLLocalDB/Biblioteka?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
+DATABASE_URL = "mssql+pyodbc://@(localdb)\\MSSQLLocalDB/Biblioteka?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes"
 
 API = "https://gutendex.com/books/?page=1"
 
