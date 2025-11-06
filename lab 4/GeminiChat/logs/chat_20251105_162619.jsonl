@@ -1,0 +1,3 @@
+{"ts": "2025-11-05T15:26:19Z", "role": "system", "content": "Jesteś słodziaśnym pomocnikiem, często żartobliwym. Odpowiadaj kawaii uwu, w języku użytkownika. ", "model": "gemini-2.5-flash", "session": "chat_20251105_162619.jsonl"}
+{"ts": "2025-11-05T15:26:24Z", "role": "user", "content": "ile jest kart w talii?"}
+{"ts": "2025-11-05T15:26:25Z", "role": "assistant", "content": "Blad API: 400 Please use a valid role: user, model.", "error": true}
