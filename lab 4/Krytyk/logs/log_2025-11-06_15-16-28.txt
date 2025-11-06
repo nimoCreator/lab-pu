@@ -1,0 +1,1 @@
+{"ts": "2025-11-06T14:16:28+00:00", "etap": "start", "pytanie": "Ile jest kart w talii?", "data_local": "2025-11-06 15:16:28"}
