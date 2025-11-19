@@ -1,0 +1,19 @@
+{"ts": "2025-11-17T18:14:21+00:00", "role": "system", "content": "Jestes pomocnym asystentem. Jesli potrzebujesz aktualnego czasu lub ceny Bitcoina, skorzystaj z dostepnych funkcji."}
+{"ts": "2025-11-17T18:14:27+00:00", "role": "user", "content": "hejka!"}
+{"ts": "2025-11-17T18:14:27+00:00", "role": "assistant", "content": "Cześć! Jak mogę ci dzisiaj pomóc?", "latency_s": 1.606, "used_tool": false}
+{"ts": "2025-11-17T18:14:38+00:00", "role": "user", "content": "Jaka jest dzisiaj data?"}
+{"ts": "2025-11-17T18:14:38+00:00", "role": "tool", "content": "call pobierzDateCzas({}) -> 2025-11-17 19:14:38", "tool_name": "pobierzDateCzas", "tool_args": {}}
+{"ts": "2025-11-17T18:14:39+00:00", "role": "assistant", "content": "Dzisiejsza data to 2025-11-17.", "latency_s_first": 1.855, "latency_s_second": 1.417, "used_tool": true, "tool_name": "pobierzDateCzas"}
+{"ts": "2025-11-17T18:14:45+00:00", "role": "user", "content": "a godzina?"}
+{"ts": "2025-11-17T18:14:45+00:00", "role": "tool", "content": "call pobierzDateCzas({}) -> 2025-11-17 19:14:45", "tool_name": "pobierzDateCzas", "tool_args": {}}
+{"ts": "2025-11-17T18:14:46+00:00", "role": "assistant", "content": "Aktualna godzina to 19:14:45.", "latency_s_first": 1.832, "latency_s_second": 1.68, "used_tool": true, "tool_name": "pobierzDateCzas"}
+{"ts": "2025-11-17T18:14:59+00:00", "role": "user", "content": "super. A jaki jest teraz kurs bitcoin?"}
+{"ts": "2025-11-17T18:14:59+00:00", "role": "assistant", "content": "W jakiej walucie chciałbyś poznać kurs Bitcoina?", "latency_s": 1.863, "used_tool": false}
+{"ts": "2025-11-17T18:15:30+00:00", "role": "user", "content": "podaj mi jaki ejst kurs bitcoin w usd"}
+{"ts": "2025-11-17T18:15:31+00:00", "role": "tool", "content": "call pobierzCeneBitcoin({'waluta': 'usd'}) -> 92795", "tool_name": "pobierzCeneBitcoin", "tool_args": {"waluta": "usd"}}
+{"ts": "2025-11-17T18:15:33+00:00", "role": "assistant", "content": "Aktualny kurs Bitcoina w USD to 92795.", "latency_s_first": 1.704, "latency_s_second": 1.933, "used_tool": true, "tool_name": "pobierzCeneBitcoin"}
+{"ts": "2025-11-17T18:15:46+00:00", "role": "user", "content": "a w pln?"}
+{"ts": "2025-11-17T18:15:47+00:00", "role": "tool", "content": "call pobierzCeneBitcoin({'waluta': 'pln'}) -> 338454", "tool_name": "pobierzCeneBitcoin", "tool_args": {"waluta": "pln"}}
+{"ts": "2025-11-17T18:15:49+00:00", "role": "assistant", "content": "Aktualny kurs Bitcoina w PLN to 338454.", "latency_s_first": 1.806, "latency_s_second": 1.899, "used_tool": true, "tool_name": "pobierzCeneBitcoin"}
+{"ts": "2025-11-17T18:15:55+00:00", "role": "user", "content": "bosko, dzięki"}
+{"ts": "2025-11-17T18:15:55+00:00", "role": "assistant", "content": "Nie ma za co! Cieszę się, że mogłem pomóc.", "latency_s": 1.472, "used_tool": false}
