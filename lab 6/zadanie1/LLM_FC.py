@@ -5,7 +5,7 @@ import requests
 from datetime import datetime, timezone
 from typing import Optional, List, Dict, Any
 
-API_KEY = "AIzaSyBWoUQqQTEvx8gI7hD34Enl6AgV5WELe3g" 
+API_KEY = "" 
 MODEL_NAME = "gemini-2.5-flash"
 API_URL = (
     f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_NAME}:generateContent?key={API_KEY}"
