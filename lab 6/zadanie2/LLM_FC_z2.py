@@ -5,8 +5,8 @@ import requests
 from datetime import datetime, timezone
 from typing import Optional, List, Dict, Any
 
-API_KEY = ""
-SERPAPI_KEY = ""
+API_KEY = "AIzaSyBWoUQqQTEvx8gI7hD34Enl6AgV5WELe3g"
+SERPAPI_KEY = "568b20408525ca022ba03107324ed0dbd5bdfb04fc3fcedb15d3715f659a025b"
 
 MODEL_NAME = "gemini-2.5-flash"
 API_URL = (
