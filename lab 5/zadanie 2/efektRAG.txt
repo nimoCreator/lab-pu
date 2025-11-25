@@ -1,0 +1,36 @@
+========================================
+QUESTION: Whats the newest vr headset annouced by valve?
+
+CONTEXT USED:
+Newest vr headset annouced by Valve is Steam Frame
+
+MODEL ANSWER:
+The newest VR headset announced by Valve is Steam Frame.
+
+========================================
+QUESTION: Who is the president of USA?
+
+CONTEXT USED:
+Currently the president of the United States is Donald Trump
+
+MODEL ANSWER:
+The president of the USA is Donald Trump.
+
+========================================
+QUESTION: What does TUC stand for?
+
+CONTEXT USED:
+TUC stands for Troria Układów Cyfrowych
+
+MODEL ANSWER:
+TUC stands for Troria Układów Cyfrowych.
+
+========================================
+QUESTION: thanks!
+
+CONTEXT USED:
+Newest vr headset annouced by Valve is Steam Frame
+
+MODEL ANSWER:
+You're welcome! Let me know if you need more information. 😊
+

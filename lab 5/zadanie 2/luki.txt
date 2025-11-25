@@ -1,0 +1,30 @@
+pytanie: 
+Whats the newest headset released by Valve
+
+odpowiedź qwen: 
+Valve Index 
+
+poprawna odpowiedź:
+Steam Frame
+
+
+
+pytanie: 
+Who is the current president of the United States?
+
+odpowiedź qwen:
+Joe Biden
+
+poprawna odpowiedź:
+Donald Trump
+
+
+
+pytanie:
+What is the acronym TUC stand for in context of Polish University Subject?
+
+odpowiedź qwen:
+no answer
+
+poprawna odpowiedź:
+Teoria Układów Cyfrowych
