@@ -1,0 +1,156 @@
+PS P:\lab-pu\lab 7> & C:/Users/nimo/AppData/Local/Python/pythoncore-3.14-64/python.exe "p:/lab-pu/lab 7/serwerMCP_HTTP.py"
+
+
+╭───────────────────────────────────────────────────────────────────────────╮
+│                                                                           │
+│                       ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                       │
+│                       █▀  █▀█ ▄▄█  █  █ ▀ █ █▄▄ █▀▀                       │
+│                                                                           │
+│                              FastMCP 2.13.1                               │
+│                                                                           │
+│                                                                           │
+│                 🖥  Server name: MCP_Server_HTTP                           │
+│                                                                           │
+│                 📦 Transport:   HTTP                                      │
+│                 🔗 Server URL:  http://127.0.0.1:8000/mcp                 │                                                   
+│                                                                           │                                                   
+│                 📚 Docs:        https://gofastmcp.com                     │                                                   
+│                 🚀 Hosting:     https://fastmcp.cloud                     │                                                   
+│                                                                           │                                                   
+╰───────────────────────────────────────────────────────────────────────────╯                                                   
+
+
+[12/01/25 11:01:37] INFO     Starting MCP server               server.py:2055                                                   
+                             'MCP_Server_HTTP' with transport                                                                   
+                             'streamable-http' on                                                                               
+                             http://127.0.0.1:8000/mcp                                                                          
+INFO:     Started server process [33536]
+INFO:     Waiting for application startup.
+[2025-12-01 11:01:37,947] [INFO] StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[2025-12-01 11:03:29,678] [INFO] Created new transport with session ID: 2cffc25aa2194c8f9a273b245342b8f8
+INFO:     127.0.0.1:63793 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63793 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63793 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63793 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63793 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63793 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63794 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:03:29,708] [INFO] Processing request of type ListToolsRequest
+[2025-12-01 11:03:31,223] [INFO] Created new transport with session ID: 40d058038fec4ec38ddcd8561ddec0f6
+INFO:     127.0.0.1:63794 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63794 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63794 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:03:31,264] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:63795 - "GET /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:03:31,223] [INFO] Created new transport with session ID: 40d058038fec4ec38ddcd8561ddec0f6
+INFO:     127.0.0.1:63794 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63794 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63794 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:03:31,264] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:63795 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63794 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63794 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63794 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:03:31,264] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:63795 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63794 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:03:31,264] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:63795 - "GET /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:03:31,264] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:63795 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63795 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63800 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63800 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:04:09,441] [INFO] Processing request of type CallToolRequest
+[2025-12-01 11:04:09,441] [INFO] Returning current datetime: 2025-12-01 11:04:09
+[2025-12-01 11:04:09,441] [INFO] Returning current datetime: 2025-12-01 11:04:09
+INFO:     127.0.0.1:61787 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:05:47,872] [INFO] Processing request of type CallToolRequest
+[2025-12-01 11:05:47,873] [INFO] Fetching Wordle from URL: https://www.nytimes.com/svc/wordle/v2/2025-12-01.json
+[2025-12-01 11:05:48,518] [INFO] Wordle 2025-12-01: leach
+INFO:     127.0.0.1:55245 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:06:08,007] [INFO] Processing request of type CallToolRequest
+[2025-12-01 11:06:08,007] [INFO] Generating sudoku: fill_percent=10 => filled_cells=8, removals=73
+INFO:     127.0.0.1:55251 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:06:19,737] [INFO] Processing request of type CallToolRequest
+[2025-12-01 11:06:19,737] [INFO] Generating sudoku: fill_percent=90 => filled_cells=73, removals=8
+[2025-12-01 11:09:38,242] [INFO] Created new transport with session ID: 9fc304f1cb3f42fca5564abd10e68b3a
+INFO:     127.0.0.1:55276 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55277 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:55276 - "GET /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:09:50,212] [INFO] Created new transport with session ID: 95128706babe47399911b8d379ff2e10
+INFO:     127.0.0.1:55282 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55283 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:55282 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55283 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:09:50,249] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:55283 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:55283 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:09:50,286] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:55283 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:55283 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:09:50,807] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:55283 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:55285 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:09:55,992] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:55285 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:55285 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:09:56,009] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:55286 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:10:01,019] [INFO] Processing request of type CallToolRequest
+[2025-12-01 11:10:01,019] [INFO] Returning current datetime: 2025-12-01 11:10:01
+INFO:     127.0.0.1:55286 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:55286 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:10:01,727] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:55286 - "POST /mcp HTTP/1.1" 202 Accepted
+[2025-12-01 11:10:17,341] [INFO] Created new transport with session ID: 9b455c6ced0d43349655ee701a8458f7
+INFO:     127.0.0.1:55289 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55290 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:55289 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55290 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:10:17,380] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:55290 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:55290 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:10:17,418] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:55290 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:10:18,009] [INFO] Processing request of type CallToolRequest
+[2025-12-01 11:10:18,009] [INFO] Fetching Wordle from URL: https://www.nytimes.com/svc/wordle/v2/2025-12-01.json
+[2025-12-01 11:10:18,550] [INFO] Wordle 2025-12-01: leach
+INFO:     127.0.0.1:55290 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:55290 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:10:18,945] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:55290 - "POST /mcp HTTP/1.1" 202 Accepted
+[2025-12-01 11:12:36,935] [INFO] Created new transport with session ID: 97c0aec0f5244265aef68b1a043e90b8
+INFO:     127.0.0.1:51022 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51023 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:51022 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51023 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:12:36,975] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:51023 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:51023 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:12:37,017] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:51023 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:12:37,638] [INFO] Processing request of type CallToolRequest
+[2025-12-01 11:12:37,638] [INFO] Generating sudoku: fill_percent=80 => filled_cells=65, removals=16
+INFO:     127.0.0.1:51025 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:51025 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:12:44,860] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:51025 - "POST /mcp HTTP/1.1" 202 Accepted
+[2025-12-01 11:13:02,781] [INFO] Created new transport with session ID: 387ad94dd38f46e897699da5646ef850
+INFO:     127.0.0.1:51029 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51030 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:51029 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51030 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:13:02,819] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:51030 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:51030 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:13:02,861] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:51030 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:13:03,538] [INFO] Processing request of type CallToolRequest
+[2025-12-01 11:13:03,538] [INFO] Generating sudoku: fill_percent=10 => filled_cells=8, removals=73
+INFO:     127.0.0.1:51032 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:51032 - "POST /mcp HTTP/1.1" 200 OK
+[2025-12-01 11:13:10,446] [INFO] Processing request of type ListToolsRequest
+INFO:     127.0.0.1:51032 - "POST /mcp HTTP/1.1" 202 Accepted

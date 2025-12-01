@@ -1,15 +1,3 @@
-# serwerMCP_STDIO.py
-"""
-Serwer MCP korzystajacy z FastMCP i transportu STDIO.
-
-Udostepnia trzy narzedzia:
-1) get_current_datetime() – bezparametrowe, zwraca aktualna date/czas
-   w formacie "YYYY-MM-DD HH:MM:SS"
-2) get_today_wordle_answer() – pobiera dzisiejsza odpowiedz Wordle
-   z publicznego API NYT
-3) generate_sudoku() – generuje losowe sudoku (plansza + rozwiazanie)
-"""
-
 from fastmcp import FastMCP
 from typing import TypedDict, List
 import logging
@@ -24,23 +12,23 @@ logging.basicConfig(
     format="[%(asctime)s] [%(levelname)s] %(message)s",
 )
 
-mcp = FastMCP("SerwerMCP_STDIO_Demo")
+mcp = FastMCP("MCP_Server_STDIO")
 
 
-# ================================= aktualna data i czas =================================
+# ================================= Current Date/Time =================================
 
 @mcp.tool()
 def get_current_datetime() -> str:
     """
-    Zwraca aktualna date i czas w formacie 'YYYY-MM-DD HH:MM:SS'.
+    Returns the current date and time formatted as 'YYYY-MM-DD HH:MM:SS'.
     """
     now = datetime.datetime.now()
     formatted = now.strftime("%Y-%m-%d %H:%M:%S")
-    logging.info("Zwracam aktualna date/czas: %s", formatted)
+    logging.info("Returning current datetime: %s", formatted)
     return formatted
 
 
-# ================================= dzisiejsza odpowiedz Wordle =================================
+# ================================= Wordle API =================================
 
 class WordleResult(TypedDict):
     date: str
@@ -50,26 +38,26 @@ class WordleResult(TypedDict):
 @mcp.tool()
 def get_today_wordle_answer() -> WordleResult:
     """
-    Pobiera dzisiejsza odpowiedz Wordle z API NYT.
+    Fetches today's Wordle solution from NYT public API.
     API: https://www.nytimes.com/svc/wordle/v2/YYYY-MM-DD.json
     """
     today = datetime.date.today()
     date_str = today.strftime("%Y-%m-%d")
     url = f"https://www.nytimes.com/svc/wordle/v2/{date_str}.json"
 
-    logging.info("Pobieram Wordle z URL: %s", url)
+    logging.info("Fetching Wordle from URL: %s", url)
 
     try:
         resp = requests.get(url, timeout=5)
         resp.raise_for_status()
         data = resp.json()
     except Exception as e:
-        logging.error("Blad API Wordle: %s", e)
-        raise RuntimeError(f"Nie udalo sie pobrac odpowiedzi Wordle: {e}")
+        logging.error("Wordle API error: %s", e)
+        raise RuntimeError(f"Failed to fetch Wordle: {e}")
 
     solution = data.get("solution")
     if not solution:
-        raise RuntimeError("API Wordle nie zwrocilo pola 'solution'.")
+        raise RuntimeError("API did not return 'solution' field.")
 
     logging.info("Wordle %s: %s", date_str, solution)
 
@@ -79,7 +67,7 @@ def get_today_wordle_answer() -> WordleResult:
     }
 
 
-# ================================= Generowanie sudoku ==============================
+# ================================= Sudoku Generator =================================
 
 class SudokuResult(TypedDict):
     puzzle: List[List[int]]
@@ -87,7 +75,7 @@ class SudokuResult(TypedDict):
 
 
 def _is_safe(board: List[List[int]], row: int, col: int, num: int) -> bool:
-    """Sprawdza, czy liczbe num mozna wstawic w (row, col)."""
+    """Checks if num can be safely placed at (row, col)."""
     if any(board[row][c] == num for c in range(9)):
         return False
     if any(board[r][col] == num for r in range(9)):
@@ -101,6 +89,7 @@ def _is_safe(board: List[List[int]], row: int, col: int, num: int) -> bool:
 
 
 def _find_empty(board):
+    """Finds the next empty cell (0)."""
     for r in range(9):
         for c in range(9):
             if board[r][c] == 0:
@@ -109,12 +98,15 @@ def _find_empty(board):
 
 
 def _generate_full_board(board) -> bool:
+    """Recursively fills the board with a valid sudoku solution."""
     empty = _find_empty(board)
     if empty is None:
         return True
+
     row, col = empty
     nums = list(range(1, 10))
     random.shuffle(nums)
+
     for num in nums:
         if _is_safe(board, row, col, num):
             board[row][col] = num
@@ -124,9 +116,12 @@ def _generate_full_board(board) -> bool:
     return False
 
 
-def _make_puzzle(solution, min_removed=40, max_removed=55):
+def _make_puzzle(solution, removals: int):
+    """
+    Removes 'removals' number of cells from the solution to form the puzzle.
+    """
     puzzle = [row[:] for row in solution]
-    removals = random.randint(min_removed, max_removed)
+    removals = max(0, min(81, removals))
     count = 0
     while count < removals:
         r = random.randint(0, 8)
@@ -138,22 +133,50 @@ def _make_puzzle(solution, min_removed=40, max_removed=55):
 
 
 @mcp.tool()
-def generate_sudoku() -> SudokuResult:
+def generate_sudoku(fill_percent: int = 50) -> SudokuResult:
     """
-    Generuje sudoku: puzzle + solution.
+    Generates sudoku: puzzle + solution.
+
+    Parameters:
+    - fill_percent (int): 0–100, percentage of cells that remain filled in the puzzle.
+        * 0  -> empty board
+        * 100 -> fully filled board
+
+    Values outside range [0, 100] will be capped.
+    Ensures at least 1 and at most 80 filled cells remain for valid gameplay.
     """
+    original = fill_percent
+    fill_percent = max(0, min(100, int(fill_percent)))
+    if fill_percent != original:
+        logging.info(
+            "fill_percent (%s) was capped to %s",
+            original,
+            fill_percent,
+        )
+
+    filled_cells = round(81 * (fill_percent / 100.0))
+    filled_cells = max(1, min(80, filled_cells))
+    removals = 81 - filled_cells
+
+    logging.info(
+        "Generating sudoku: fill_percent=%s => filled_cells=%s, removals=%s",
+        fill_percent,
+        filled_cells,
+        removals,
+    )
+
     board = [[0] * 9 for _ in range(9)]
     if not _generate_full_board(board):
-        raise RuntimeError("Nie udalo sie wygenerowac sudoku.")
+        raise RuntimeError("Failed to generate sudoku solution.")
     solution = [row[:] for row in board]
-    puzzle = _make_puzzle(solution)
+    puzzle = _make_puzzle(solution, removals=removals)
     return {
         "puzzle": puzzle,
         "solution": solution,
     }
 
 
-# ================================= MAIN ==============================
+# ================================= MAIN =================================
 
 if __name__ == "__main__":
     mcp.run()

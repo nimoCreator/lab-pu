@@ -1,346 +1,197 @@
-"""
-hostMCP.py
-
-Aplikacja – host MCP dla modelu zdalnego Gemini.
- - prowadzi prosty chat w terminalu,
- - loguje pytania i odpowiedzi do pliku log.txt,
- - laczy sie jako klient MCP (HTTP / SSE) z serwerem MCP z zadania 2,
- - udostepnia narzedzia MCP modelowi Gemini poprzez mechanizm function calling.
-
-Wymagane pakiety:
-    pip install "mcp[cli]" google-genai python-dotenv
-
-Wymagane zmienne srodowiskowe:
-    GEMINI_API_KEY  - klucz API Gemini
-    MCP_SERVER_URL  - adres serwera MCP (np. http://localhost:8000/sse)
-"""
-
 import asyncio
 import json
-import os
-import sys
 from datetime import datetime
-from typing import Any, Dict, List
 
-from dotenv import load_dotenv
-
-from mcp import ClientSession, types
-from mcp.client.sse import sse_client 
-from mcp.shared.context import RequestContext
+from mcp.client.session import ClientSession
+from mcp.client.streamable_http import streamablehttp_client
 
 from google import genai
+from google.genai import types as genai_types
 
 LOG_FILE = "log.txt"
-GEMINI_MODEL = "gemini-2.0-flash"  # mozesz zmienic na inny wspierajacy function calling
+MODEL_NAME = "gemini-2.0-flash"
+API_KEY = "AIzaSyAaHR5vCGU_cCLvxfKR2p4ppa4cuwbzeJI"
+
+MCP_SERVER_URL = "http://127.0.0.1:8000/mcp"
 
 
-# =====================================================================
-# Pomocnicze logowanie do pliku log.txt
-# =====================================================================
-
-def append_to_log(role: str, text: str) -> None:
-    """Dopisuje linijke do log.txt w formacie:
-       [YYYY-MM-DD HH:MM:SS] ROLE: tekst
-    """
+def log(role: str, text: str):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    line = f"[{timestamp}] {role.upper()}: {text}\n"
-    try:
-        with open(LOG_FILE, "a", encoding="utf-8") as f:
-            f.write(line)
-    except Exception as e:
-        # Przy logowaniu nie chcemy zabijac aplikacji
-        print(f"(WARN) Nie udalo sie zapisac do log.txt: {e}", file=sys.stderr)
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+        f.write(f"[{timestamp}] {role.upper()}: {text}\n")
 
-
-# =====================================================================
-# Handler integrujacy Gemini z MCP (HTTP SSE)
-# =====================================================================
 
 class GeminiMCPHandler:
-    """
-    Odpowiada za:
-    - polaczenie z Gemini,
-    - pobranie listy narzedzi MCP i zamiane ich na deklaracje funkcji dla Gemini,
-    - wykonywanie wywolanych przez model funkcji (czyli narzedzi MCP),
-    - skladanie finalnej odpowiedzi dla uzytkownika.
-    """
-
-    def __init__(self, client_session: ClientSession, gemini_client: genai.Client):
-        self.client_session = client_session
+    def __init__(self, session: ClientSession, gemini_client: genai.Client):
+        self.session = session
         self.gemini_client = gemini_client
 
-    # -------------------------- MCP -> Gemini tools -------------------
-
-    async def _get_tools_for_gemini(self) -> List[Dict[str, Any]]:
+    async def _build_tool_config(self) -> genai_types.GenerateContentConfig:
         """
-        Pobiera liste narzedzi MCP i konwertuje je na format tools
-        akceptowany przez Gemini (functionDeclarations).
-        Dokumentacja: https://ai.google.dev/gemini-api/docs/function-calling
+        Pobiera liste MCP tools i zamienia na FunctionDeclaration + Tool
+        dla Google GenAI.
         """
-        tools_resp = await self.client_session.list_tools()
+        tools = await self.session.list_tools()
 
-        function_declarations = []
-        for tool in tools_resp.tools:
-            # MCP udostepnia inputSchema dla narzedzia – jest kompatybilne z OpenAPI/JSON Schema
-            params_schema = getattr(
-                tool,
-                "inputSchema",
-                {"type": "object", "properties": {}}
-            )
+        function_decls: list[genai_types.FunctionDeclaration] = []
 
-            function_declarations.append(
-                {
-                    "name": tool.name,
-                    "description": tool.description or "No description",
-                    "parameters": params_schema,
-                }
-            )
-
-        # Gemini spodziewa sie listy narzedzi, gdzie kazdy element ma pole functionDeclarations
-        tools_for_gemini = [
-            {
-                "functionDeclarations": function_declarations
+        for t in tools.tools:
+            schema = getattr(t, "inputSchema", None) or {
+                "type": "object",
+                "properties": {},
             }
-        ]
-        return tools_for_gemini
 
-    async def _execute_mcp_tool(self, tool_call: Any) -> Dict[str, Any]:
-        """
-        Wykonuje jedno wywolanie narzedzia MCP w odpowiedzi na zlecenie modelu
-        (functionCall z odpowiedzi Gemini).
+            fn = genai_types.FunctionDeclaration(
+                name=t.name,
+                description=t.description or "",
+                parameters_json_schema=schema,
+            )
+            function_decls.append(fn)
 
-        Zwraca:
-          {
-            "log": "[Used tool_name(args)]",
-            "function_response_part": {...}  # czesc konwersacji dla Gemini
-          }
+        tool = genai_types.Tool(function_declarations=function_decls)
+
+        # automatic_function_calling.disable=True => model ZWRACA function_calls,
+        # ale ich nie wykonuje – my je obslugujemy recznie.
+        config = genai_types.GenerateContentConfig(
+            tools=[tool],
+            automatic_function_calling=genai_types.AutomaticFunctionCallingConfig(
+                disable=True
+            ),
+        )
+        return config
+
+    async def _call_mcp_tool(self, tool_call: genai_types.FunctionCall) -> dict:
         """
-        tool_name = tool_call.name
-        args = dict(tool_call.args) if tool_call.args else {}
+        Wywoluje narzedzie MCP na podstawie FunctionCall.
+        Dziala zarowno z wersjami SDK, gdzie jest .function_call.args,
+        jak i tam, gdzie args sa bezposrednio na obiekcie.
+        """
+        name = tool_call.name
+
+        # Proba nowego API (function_call.args) – jak w dokumentacji
+        inner = getattr(tool_call, "function_call", None)
+        raw_args = None
+        if inner is not None:
+            raw_args = getattr(inner, "args", None)
+
+        # Fallback dla wersji, gdzie args sa bezposrednio
+        if raw_args is None:
+            raw_args = getattr(tool_call, "args", {}) or {}
+
+        # Na wszelki wypadek zamieniamy na dict
+        try:
+            args = dict(raw_args)
+        except TypeError:
+            # jakby to bylo juz dict/Mapping pydanticowe, to tez przejdzie
+            args = raw_args
 
         try:
-            # Wywolanie narzedzia po stronie MCP
-            result = await self.client_session.call_tool(tool_name, args)
-            # Zakladamy pojedynczy content tekstowy
-            content_text = ""
-            if result.content:
-                # MCP typowo zwraca liste content (TextContent, JSONContent itp.)
-                first = result.content[0]
-                # dla prostoty probujemy .text, jesli istnieje:
-                content_text = getattr(first, "text", str(first))
-
-            log_msg = f"[Used {tool_name}({json.dumps(args)})]"
-            # Czesciowa odpowiedz funkcji (dla Gemini)
-            function_response_part = {
-                "functionResponse": {
-                    "name": tool_name,
-                    "response": {
-                        "result": content_text
-                    }
-                }
-            }
-
+            result = await self.session.call_tool(name, args)
+            content = result.content[0] if result.content else None
+            result_text = getattr(content, "text", str(content))
         except Exception as e:
-            content_text = f"Error calling tool {tool_name}: {e}"
-            log_msg = f"[{content_text}]"
-            function_response_part = {
-                "functionResponse": {
-                    "name": tool_name,
-                    "response": {
-                        "result": content_text
-                    }
-                }
-            }
+            result_text = f"Error calling tool: {e}"
 
-        return {
-            "log": log_msg,
-            "function_response_part": function_response_part,
-        }
+        log("tool", f"{name}({json.dumps(args)}) -> {result_text}")
 
-    # -------------------------- glowne przetwarzanie -------------------
+        return {"result": result_text}
 
-    async def process_query(self, query: str) -> str:
-        """
-        Przetwarza zapytanie uzytkownika:
+    async def process(self, user_text: str) -> str:
+        tool_config = await self._build_tool_config()
 
-        1) wysyla do Gemini tresc pytania + deklaracje funkcji (narzedzi MCP),
-        2) sprawdza, czy model chce wywolac jakies funkcje (functionCall),
-        3) jesli tak – wywoluje narzedzia MCP, buduje functionResponse,
-        4) wysyla ponownie do Gemini wynik narzedzi + prosbe o finalna odpowiedz.
-        """
-        # 1. Przygotowanie narzedzi dla Gemini (functionDeclarations)
-        tools = await self._get_tools_for_gemini()
-
-        # 2. Pierwsze wywolanie modelu – model decyduje, czy uzyc funkcji
-        #    Uzywamy klienta google-genai (Gemini API)
-        #    Dokumentacja: https://googleapis.github.io/python-genai/
-        def _call_gemini_once(contents: List[dict], tools: List[dict] | None = None):
+        def _gemini(contents, config: genai_types.GenerateContentConfig | None):
             return self.gemini_client.models.generate_content(
-                model=GEMINI_MODEL,
+                model=MODEL_NAME,
                 contents=contents,
-                tools=tools or [],
+                config=config,
             )
 
-        # Konwersacja w formacie Gemini:
-        # pojedyncza wiadomosc usera
-        conversation: List[dict] = [
-            {
-                "role": "user",
-                "parts": [{"text": query}],
-            }
-        ]
-
-        initial_response = await asyncio.to_thread(
-            _call_gemini_once,
-            conversation,
-            tools,
+        # === 1. Pierwsze wywolanie – model decyduje, czy potrzebuje funkcji ===
+        initial = await asyncio.to_thread(
+            _gemini,
+            user_text,          # string -> SDK zrobi z tego UserContent
+            tool_config,
         )
 
-        # Bierzemy pierwszego kandydata
-        candidate = initial_response.candidates[0]
-        parts = candidate.content.parts
-
-        result_parts: List[str] = []
-        function_calls: List[Any] = []
-
-        # Przetwarzamy wszystkie parts – moga zawierac tekst i/lub functionCall
-        for part in parts:
-            if getattr(part, "text", None):
-                result_parts.append(part.text)
-            if getattr(part, "function_call", None):
-                function_calls.append(part.function_call)
-
-        # Jesli nie ma wywolan funkcji – zwracamy sama odpowiedz modelu
+        # Jezeli model nie chce funkcji, mamy zwykly tekst
+        function_calls = list(initial.function_calls or [])
         if not function_calls:
-            assistant_text = "\n".join(result_parts).strip()
-            if not assistant_text:
-                assistant_text = "(Brak odpowiedzi od modelu)"
-            return assistant_text
+            return initial.text or "(empty response)"
 
-        # 3. Jesli sa funkcje do wywolania – uruchamiamy narzedzia MCP
-        tool_logs: List[str] = []
-        function_response_parts: List[dict] = []
+        # === 2. Wywolujemy MCP tools ===
+        tool_results: list[tuple[genai_types.FunctionCall, dict]] = []
+        for call in function_calls:
+            result_obj = await self._call_mcp_tool(call)
+            tool_results.append((call, result_obj))
 
-        for fc in function_calls:
-            tool_result = await self._execute_mcp_tool(fc)
-            tool_logs.append(tool_result["log"])
-            function_response_parts.append(tool_result["function_response_part"])
+        # === 3. Drugi przebieg: user prompt + function_call + function_response ===
 
-        # Doklejamy functionResponse do konwersacji i robimy drugie wywolanie Gemini
-        conversation.append(
-            {
-                "role": "model",  # model wygenerowal functionCall
-                "parts": parts,
-            }
-        )
-        conversation.append(
-            {
-                "role": "user",  # my "uzytkownik systemowy" przekazujemy wyniki funkcji
-                "parts": function_response_parts,
-            }
+        # a) oryginalny prompt usera
+        user_content = genai_types.Content(
+            role="user",
+            parts=[genai_types.Part.from_text(text=user_text)],
         )
 
-        final_response = await asyncio.to_thread(
-            _call_gemini_once,
-            conversation,
-            None,  # teraz bez tools – model ma juz wyniki funkcji
+        # b) to, co model wygenerowal w pierwszej odpowiedzi (zawiera function_calls)
+        function_call_content = initial.candidates[0].content
+
+        # c) odpowiedzi narzedzi jako role="tool"
+        response_parts: list[genai_types.Part] = []
+        for call, result_obj in tool_results:
+            part = genai_types.Part.from_function_response(
+                name=call.name,
+                response=result_obj,
+            )
+            response_parts.append(part)
+
+        function_response_content = genai_types.Content(
+            role="tool",
+            parts=response_parts,
         )
 
-        final_candidate = final_response.candidates[0]
-        final_text_parts = []
-        for p in final_candidate.content.parts:
-            if getattr(p, "text", None):
-                final_text_parts.append(p.text)
+        final = await asyncio.to_thread(
+            _gemini,
+            [user_content, function_call_content, function_response_content],
+            tool_config,
+        )
 
-        final_text = "\n".join(result_parts + tool_logs + final_text_parts).strip()
-        if not final_text:
-            final_text = "(Brak finalnej odpowiedzi od modelu)"
-
-        return final_text
+        return final.text or "(empty response)"
 
 
-# =====================================================================
-# Prosty chat w terminalu z logowaniem do log.txt
-# =====================================================================
-
-async def run_chat(handler: GeminiMCPHandler) -> None:
-    """
-    Prosta petla chatowa:
-      - pobiera pytanie z input(),
-      - wysyla do handlera,
-      - wypisuje i loguje odpowiedz.
-    Komenda 'quit' konczy program.
-    """
-    print("=== MCP + Gemini chat (hostMCP) ===")
-    print("Wpisz swoje pytanie, 'quit' aby zakonczyc.\n")
+async def chat(handler: GeminiMCPHandler):
+    print("\n🚀 Gemini MCP Chat Ready!")
+    print("Type 'quit' to exit.\n")
 
     while True:
-        try:
-            user = input("Ty: ").strip()
-        except (EOFError, KeyboardInterrupt):
-            print("\nKoniec.")
-            return
-
-        if not user:
-            continue
+        user = input("You: ").strip()
         if user.lower() == "quit":
-            print("Koniec.")
+            print("👋 Bye!")
             return
 
-        append_to_log("user", user)
-
-        try:
-            answer = await handler.process_query(user)
-        except Exception as e:
-            answer = f"(Blad podczas przetwarzania zapytania: {e})"
-
-        print(f"\nAsystent: {answer}\n")
-        append_to_log("assistant", answer)
+        log("user", user)
+        reply = await handler.process(user)
+        print("\nAssistant:", reply, "\n")
+        log("assistant", reply)
 
 
-# =====================================================================
-# Inicjalizacja: polaczenie z serwerem MCP (HTTP SSE) i Gemini
-# =====================================================================
+async def main():
+    # Klient Gemini
+    gemini = genai.Client(api_key=API_KEY)
+    mcp_url = MCP_SERVER_URL
 
-async def main() -> None:
-    load_dotenv()
+    print("🔌 Connecting to MCP:", mcp_url)
 
-    api_key = os.getenv("GEMINI_API_KEY", "").strip()
-    if not api_key:
-        print("BLAD: Brak zmiennej srodowiskowej GEMINI_API_KEY.", file=sys.stderr)
-        sys.exit(1)
-
-    mcp_url = os.getenv("MCP_SERVER_URL", "").strip()
-    if not mcp_url:
-        print("BLAD: Brak zmiennej srodowiskowej MCP_SERVER_URL.", file=sys.stderr)
-        print("Przyklad: MCP_SERVER_URL=http://localhost:8000/sse", file=sys.stderr)
-        sys.exit(1)
-
-    print(f"Łacze z MCP (HTTP SSE): {mcp_url}")
-    print(f"Model Gemini: {GEMINI_MODEL}")
-
-    # Inicjalizacja klienta Gemini
-    gemini_client = genai.Client(api_key=api_key)
-
-    # Polaczenie z serwerem MCP po HTTP (SSE)
-    from pydantic import AnyUrl
-
-    async with sse_client(AnyUrl(mcp_url)) as (read, write):
+    # Klient MCP po streamable-http – dopasowany do FastMCP
+    async with streamablehttp_client(mcp_url) as (read, write, _):
         async with ClientSession(read, write) as session:
-            # inicjalizacja MCP
             await session.initialize()
 
-            # dla debug – wypisz dostepne narzedzia
-            tools_resp = await session.list_tools()
-            tool_names = [t.name for t in tools_resp.tools]
-            print("Dostepne narzedzia MCP:", ", ".join(tool_names) or "(brak)")
+            tools = await session.list_tools()
+            print("🛠 Tools:", [t.name for t in tools.tools])
 
-            handler = GeminiMCPHandler(session, gemini_client)
-            await run_chat(handler)
+            handler = GeminiMCPHandler(session, gemini)
+            await chat(handler)
 
 
 if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        print("\nPrzerwano przez uzytkownika.")
+    asyncio.run(main())
