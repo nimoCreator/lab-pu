@@ -1,31 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PU Lab 9 | Index</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
+
 <body>
     <header>
         <a class="logo" href="index.html">
+            <span class="material-symbols-outlined">school</span>
             PU Lab 9
         </a>
         <nav>
             <a href="bryly.html">Bryły</a>
             <a href="bitcoin.html">Bitcoin</a>
-            <a href="gemini.html">Autor</a>
+            <a href="gemini.html">Gemini</a>
         </nav>
     </header>
     <main>
 
-    <!-- 
+        <!-- 
     Stworzyć stronę gemini.html, w której użytkownik w polu tekstowym wpisuje prompt, a po naciśnieciu przycisku Wyślij wyświetlana jest na stronie dopowiedź uzyskana z Gemini API.
     -->
 
+        <div class="panel">
+            <div class="panelHeader">
+                Gemini API Chat
+            </div>
+            <div class="panelBody">
+                <div id="conversationCon">
+                    <div class="message userMessage">
+                        <div class="messagePfp">
+                            <span class="material-symbols-outlined">person</span>
+                        </div>
+                        <span class="messageLabel">Użytkownik</span>
+                        <span class="messageText">Witaj, Gemini!</span>
+                        <span class="messageTime">10:00 AM</span>
+                    </div>
+                    <div class="message botMessage">
+                        <div class="messagePfp">
+                            <span class="material-symbols-outlined">smart_toy</span>
+                        </div>
+                        <span class="messageLabel">Gemini</span>
+                        <span class="messageText">Witaj! Jak mogę Ci pomóc?</span>
+                        <span class="messageTime">10:00 AM</span>
+                    </div>
+                </div>
+                <form id="geminiForm">
+                    <input type="text" id="promptInput" name="promptInput" placeholder="Wpisz wiadomość tutaj...">
+                    <button type="submit" id="sendPromptButton">
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+
     </main>
     <footer>
-        <p>Sebastian Legierski 301954</p>
+        Sebastian Legierski 301954
     </footer>
+
+    <script src="gemini.js"></script>
 </body>
+
 </html>

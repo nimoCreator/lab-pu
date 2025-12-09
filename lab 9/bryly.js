@@ -39,14 +39,13 @@ const calculateResults = () => {
     const densityRadios = document.querySelectorAll('input[name="material"]');
 
     const resultsCon = document.getElementById("resultsTableCon");
-    resultsCon.innerHTML = "<table><tr><th colspan=\"2\">Wyniki obliczeń:</th></tr>";
+    let resultHtml = "<table><tr><th colspan=\"2\">Wyniki obliczeń:</th></tr>";
 
-    const volumeCheckbox = document.getElementById("volumeCheckBox");
-    const massCheckbox = document.getElementById("massCheckBox");
-    const surfaceAreaCheckbox = document.getElementById("surfaceAreaCheckBox");
+    const selectedResults = Array.from(
+            document.getElementById("resultsSelect").selectedOptions
+        ).map(opt => opt.value);
 
-
-    if (volumeCheckbox.checked || massCheckbox.checked) {
+    if (selectedResults.includes("volume") || selectedResults.includes("mass")) {
         let volume = 0;
         switch (shape) {
             case "cylinder": {
@@ -89,15 +88,16 @@ const calculateResults = () => {
                 break;
             }
         }
-        if (volumeCheckbox.checked) {
-            resultsCon.innerHTML += `<tr><td>Objętość:</td><td>${volume.toFixed(2)} cm³</td></tr>`;
+        if (selectedResults.includes("volume")) {
+            resultHtml += `<tr><td>Objętość:</td><td>${volume.toFixed(2)} cm³</td></tr>`;
         }
-        if (massCheckbox.checked) {
+        if (selectedResults.includes("mass")) {
             let density = 0;
             densityRadios.forEach(radio => {
                 if (radio.checked) {
-                    if (radio.value === "aluminium") density = 2.70;
-                    else if (radio.value === "wood") density = 0.60;
+                    if (radio.value === "material1") density = 7.85;
+                    else if (radio.value === "material2") density = 2.70;
+                    else if (radio.value === "material3") density = 0.60;
                     else if (radio.value === "other") {
                         const densityInput = document.querySelector(".densityInput");
                         density = parseFloat(densityInput.value) || 0;
@@ -106,11 +106,11 @@ const calculateResults = () => {
             });
 
             const mass = volume * density;
-            resultsCon.innerHTML += `<tr><td>Masa:</td><td>${mass.toFixed(2)}g</td></tr>`;
+            resultHtml += `<tr><td>Masa:</td><td>${mass.toFixed(2)} g</td></tr>`;
         }
     }
 
-    if (surfaceAreaCheckbox.checked) {
+    if (selectedResults.includes("surfaceArea")) {
         let surfaceArea = 0;
         switch (shape) {
             case "cube": {
@@ -146,22 +146,23 @@ const calculateResults = () => {
             case "prism": {
                 const baseArea = parseFloat(document.getElementById("baseArea").value) || 0;
                 const height = parseFloat(document.getElementById("height").value) || 0;
-                const perimeter = alert("Podaj obwód podstawy graniastosłupa");
+                const perimeter = parseFloat(prompt("Podaj obwód podstawy graniastosłupa") || 0);
                 surfaceArea = 2 * baseArea + perimeter * height;
                 break;
             }
             case "pyramid": {
                 const baseArea = parseFloat(document.getElementById("baseArea").value) || 0;                
-                const perimeter = alert("Podaj obwód podstawy ostrosłupa");
-                const slantHeight = alert("Podaj wysokośc ścianki bocznej ostrosłupa");
+                const perimeter = parseFloat(prompt("Podaj obwód podstawy ostrosłupa") || 0);
+                const slantHeight = parseFloat(prompt("Podaj wysokość ścianki bocznej ostrosłupa") || 0);
                 surfaceArea = baseArea + (perimeter * slantHeight) / 2;
                 break;
             }
         }
-        resultsCon.innerHTML += `<tr><td>Pole powierzchni:</td><td>${typeof surfaceArea === "number" ? surfaceArea.toFixed(2) + " cm²" : surfaceArea}</td></tr>`;
+        resultHtml += `<tr><td>Pole powierzchni:</td><td>${typeof surfaceArea === "number" ? surfaceArea.toFixed(2) + " cm²" : surfaceArea}</td></tr>`;
     }
 
-    resultsCon.innerHTML += "</table>";
+    resultHtml += "</table>";
+    resultsCon.innerHTML = resultHtml;
 };
 
 

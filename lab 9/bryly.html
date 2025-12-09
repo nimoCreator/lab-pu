@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PU Lab 9 | Index</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <a class="logo" href="index.html">
@@ -14,12 +16,12 @@
         <nav>
             <a href="bryly.html">Bryły</a>
             <a href="bitcoin.html">Bitcoin</a>
-            <a href="gemini.html">Autor</a>
+            <a href="gemini.html">Gemini</a>
         </nav>
     </header>
     <main>
 
-    <!-- 
+        <!-- 
     Stworzyć stronę bryly.htm, na której użytkownik podaje promień bryły w polu tekstowym i wybiera rodzaj bryły za pomocą listy rozwijanej (kula, stożek, walec). 
     W chwili wybrania bryły innej niż kula pojawia się dodatkowe pole do wpisania wysokości. 
     Użytkownika z pomocą przycisków radio wybiera materiał, z którego wykanana jest bryła. 
@@ -27,90 +29,99 @@
     Po naciśnieciu przycisku Oblicz poniżej wyświetlane są w formie tabeli wybrane wyniki (w lewej kolumnie nazwa wyniku, w prawej wartość).
     -->
 
-    <div class="panel">
-        <div class="panelHeader">
+        <div class="panel">
+            <div class="panelHeader">
+                Kalkulator Bryły
+            </div>
+            <div class="panelBody">
 
-        </div>
-        <div class="panelBody">
-            
-            <form action="none" id="shapeForm">         
-                <div class="shapeSelectCon">  
-                <label for="shape">Wybierz rodzaj bryły:</label>
-                    <select id="shapeSelect" name="shape">
-                        <option value="sphere">Kula</option>
-                        <option value="cylinder">Walec</option>
-                        <option value="cone">Stożek</option>
+                <form action="none" id="shapeForm">
+                    <div class="shapeSelectCon">
+                        <label for="shape">Wybierz rodzaj bryły:</label>
+                        <select id="shapeSelect" name="shape">
+                            <option value="sphere">Kula</option>
+                            <option value="cylinder">Walec</option>
+                            <option value="cone">Stożek</option>
 
-                        <option value="prism">Graniastosłup</option>
-                        <option value="pyramid">Ostrosłup</option>
-                        
-                        <option value="cuboid">Prostopadłościan</option>
-                        <option value="cube">Sześcian</option>
-                    </select>
-                </div>   
-                
-                
-                <div id="inputsCon">
-                    <div class="inputCon" id="radiusCon">
-                        <label for="radius">Podaj promień (r):</label>
-                        <input type="number" id="radius" name="radius" step="any" min="0"  class="shapeInput">
+                            <option value="prism">Graniastosłup</option>
+                            <option value="pyramid">Ostrosłup</option>
+
+                            <option value="cuboid">Prostopadłościan</option>
+                            <option value="cube">Sześcian</option>
+                        </select>
                     </div>
-                    <div class="inputCon" id="heightCon" >
-                        <label for="height">Podaj wysokość (h):</label>
-                        <input type="number" id="height" name="height" step="any" min="0"  class="shapeInput">
+
+
+                    <div id="inputsCon">
+                        <div class="inputCon" id="radiusCon">
+                            <label for="radius">Podaj promień (r):</label>
+                            <input type="number" id="radius" name="radius" step="any" min="0" class="shapeInput">
+                        </div>
+                        <div class="inputCon" id="heightCon">
+                            <label for="height">Podaj wysokość (h):</label>
+                            <input type="number" id="height" name="height" step="any" min="0" class="shapeInput">
+                        </div>
+                        <div class="inputCon" id="baseAreaCon">
+                            <label for="baseArea">Podaj pole podstawy (A):</label>
+                            <input type="number" id="baseArea" name="baseArea" step="any" min="0" class="shapeInput">
+                        </div>
+                        <div class="inputCon" id="aLengthCon">
+                            <label for="length">Podaj długość krawędzi a:</label>
+                            <input type="number" id="length" name="length" step="any" min="0" class="shapeInput">
+                        </div>
+                        <div class="inputCon" id="bWidthCon">
+                            <label for="width">Podaj szerokość krawędzi b:</label>
+                            <input type="number" id="width" name="width" step="any" min="0" class="shapeInput">
+                        </div>
+                        <div class="inputCon" id="cHeightCon">
+                            <label for="cHeight">Podaj wysokość c:</label>
+                            <input type="number" id="cHeight" name="cHeight" step="any" min="0" class="shapeInput">
+                        </div>
                     </div>
-                    <div class="inputCon" id="baseAreaCon" >
-                        <label for="baseArea">Podaj pole podstawy (A):</label>
-                        <input type="number" id="baseArea" name="baseArea" step="any" min="0"  class="shapeInput">
+
+
+                    <div class="materialCon">
+                        <p>Wybierz materiał:</p>
+                        <div class="radioCon">
+                            <input type="radio" id="material1" name="material" value="material1" checked>
+                            <label for="material1">Stal (7.85 g/cm³)</label>
+                        </div>
+                        <div class="radioCon">
+                            <input type="radio" id="material2" name="material" value="material2">
+                            <label for="material2">Aluminium (2.70 g/cm³)</label>
+                        </div>
+                        <div class="radioCon">
+                            <input type="radio" id="material3" name="material" value="material3">
+                            <label for="material3">Drewno (0.60 g/cm³)</label>
+                        </div>
+                        <div class="radioCon">
+                            <input type="radio" id="material4" name="material" value="other">
+                            <label for="material4">Inny <input type="number" step="any" min="0" class="densityInput"
+                                    disabled> (g/cm³)</label>
+                        </div>
                     </div>
-                    <div class="inputCon" id="aLengthCon" >
-                        <label for="length">Podaj długość krawędzi a:</label>
-                        <input type="number" id="length" name="length" step="any" min="0" class="shapeInput">
+                    <div class="resultsCon">
+                        <label for="resultsSelect">Wybierz wyniki do obliczenia:</label>
+                        <select id="resultsSelect" name="result" multiple size="3">
+                            <option value="volume">Objętość</option>
+                            <option value="mass">Masa</option>
+                            <option value="surfaceArea">Pole powierzchni</option>
+                        </select>
                     </div>
-                    <div class="inputCon" id="bWidthCon" >
-                        <label for="width">Podaj szerokość krawędzi b:</label>
-                        <input type="number" id="width" name="width" step="any" min="0" class="shapeInput">
-                    </div>
-                    <div class="inputCon" id="cHeightCon" >
-                        <label for="cHeight">Podaj wysokość c:</label>
-                        <input type="number" id="cHeight" name="cHeight" step="any" min="0" class="shapeInput">
-                    </div> 
+                    <input type="submit" value="Oblicz"></input>
+                </form>
+
+                <div id="resultsTableCon">
                 </div>
-
-
-                <div class="materialCon">
-                    <p>Wybierz materiał:</p>
-                    <input type="radio" id="material1" name="material" value="steel" checked>
-                    <label for="material1">Stal (7.85 g/cm³)</label>
-                    <input type="radio" id="material2" name="material" value="aluminum">
-                    <label for="material2">Aluminium (2.70 g/cm³)</label>
-                    <input type="radio" id="material3" name="material" value="wood">
-                    <label for="material3">Drewno (0.60 g/cm³)</label>
-                    <input type="radio" id="material4" name="material" value="other">
-                    <label for="material4">Inny <input type="number" step="any" min="0" class="densityInput" disabled> (g/cm³)</label>
-                </div>
-                <div class="resultsCon">
-                    <p>Wybierz wyniki do obliczenia:</p>
-                    <input type="checkbox" id="volumeCheckBox" name="result" value="volume">
-                    <label for="volumeCheckBox">Objętość</label>
-                    <input type="checkbox" id="massCheckBox" name="result" value="mass">
-                    <label for="massCheckBox">Masa</label>
-                    <input type="checkbox" id="surfaceAreaCheckBox" name="result" value="surfaceArea">
-                    <label for="surfaceAreaCheckBox">Pole powierzchni</label>
-                </div>
-                <input type="submit" value="Oblicz"></input>
-            </form>
-
-            <div id="resultsTableCon">
             </div>
         </div>
-    </div>
 
     </main>
     <footer>
-        <p>Sebastian Legierski 301954</p>
+        Sebastian Legierski 301954
     </footer>
 
     <script src="bryly.js"></script>
 </body>
+
 </html>
